@@ -1,0 +1,13 @@
+1 - Structure Query Language(Linguagem de consulta estruturada) é uma linguagem inspirada na Álgebra Relacional, sendo a linguagem padrão dos bancos de dados relacionais;
+
+2 - 5 subgrupos: DQL,DML, DDL, DTL, DCL; 
+
+3 - O DQL (Data Query Language) é utilizado para se realizar consultas no banco de dados. Comando: SELECT;
+
+4 - O DML (Data Manipulation Language) é utilizado para se realizar a inclusão, exclusão ou alteração dos dados do banco de daods. Comandos: INSERT, DELET, UPDATE;
+
+5 - O DDL (Data Definition Language) é utilizado para criar, alterar ou excluir bancos de dados, tabelas e elementos associados. Comandos: CREATE, DROP, ALTER;
+
+6 - O DCL (Data Control Language) é utilizado para controlar os usuários que podem realizar alterações e modificações no banco de dados. Comandos: GRANT, REVOKE;
+
+7 - O DTL (Data Transiction Language) é utilizado para controlar as transições do banco de dados, permitindo desfazer ações ou aplicar alterações ao banco de dados de maneira segura. Comandos: COMMIT, ROLLBACK, BEGUN;
