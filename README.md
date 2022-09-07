@@ -1,2 +1,2 @@
 # Exercicios
-Repositório com os exercícios feitos durante os estudos.
+Repositório com os exercícios feitos durante os estudos de **Java**.
