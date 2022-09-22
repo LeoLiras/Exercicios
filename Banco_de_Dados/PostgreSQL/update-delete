@@ -1,0 +1,6 @@
+--UPDATE tipos_produto SET descricao = 'Nobreak' WHERE codigo = 2;
+--NUNCA ESQUECER O WHERE
+SELECT * FROM tipos_produto;
+
+--INSERT INTO tipos_produto(descricao) VALUES ('Acessorios');
+--DELETE FROM tipos_produto WHERE codigo = 3;

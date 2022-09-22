@@ -1,0 +1,7 @@
+SELECT * FROM tipos_produto;
+
+--BEGIN TRANSACTION;
+	--INSERT INTO tipos_produto(descricao) VALUES ('Acessórios');
+	--INSERT INTO tipos_produto(descricao) VALUES ('Coolers');
+--COMMIT;
+ROLLBACK;

@@ -1,0 +1,37 @@
+--Produto Cartesiano
+SELECT c.id, c.nome, c.data_nascimento, c.telefone, p.cargo 
+	FROM clientes AS c, profissoes AS p
+   	WHERE c.id_profissao = p.id;
+	
+-- Inner Join	
+SELECT c.id, c.nome, c.data_nascimento, c.telefone, p.cargo
+	FROM clientes AS c INNER JOIN profissoes AS p
+	ON  c.id_profissao = p.id;
+	
+-- Left Outer Join
+ SELECT * FROM clientes
+ LEFT OUTER JOIN profissoes
+ ON clientes.id_profissao = profissoes.id;
+ 
+ -- Right Outer Join
+ SELECT * FROM clientes
+ RIGHT OUTER JOIN profissoes
+ ON clientes.id_profissao = profissoes.id;
+ 
+ -- Full Outer Join -- Funciona no PostgreSQL mas nao funciona no MySQL
+ SELECT * FROM clientes
+ FULL OUTER JOIN profissoes
+ ON clientes.id_profissao = profissoes.id;
+ 
+ -- Cross Join
+ SELECT c.id, c.nome, c.data_nascimento, c.telefone, p.cargo
+ FROM clientes AS c
+ CROSS JOIN profissoes AS p;
+ 
+ -- Self Join
+SELECT a.nome AS Consumidor1, b.nome AS Consumidor2, a.cidade
+FROM consumidor AS a
+INNER JOIN consumidor AS b
+ON a.id <> b.id
+AND a.cidade = b.cidade
+ORDER BY a.cidade;

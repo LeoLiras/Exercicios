@@ -1,0 +1,3 @@
+--SELECT * FROM produtos WHERE codigo = 2;
+--SELECT * FROM produtos WHERE descricao = 'Laptop';
+--SELECT * FROM produtos WHERE preco >= 'R$ 1200';

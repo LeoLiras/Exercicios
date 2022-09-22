@@ -1,0 +1,11 @@
+--CREATE TABLE empresas(
+--	id SERIAL PRIMARY KEY,
+--	nome VARCHAR(50) NOT NULL,
+--	funcionarios INT NOT NULL,
+--	cidade VARCHAR(50) NOT NULL
+--);
+
+--GRANT ALL ON empresas TO estagiario;
+--REVOKE ALL on empresas FROM estagiario;
+
+GRANT SELECT ON empresas TO estagiario;

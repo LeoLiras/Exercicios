@@ -1,0 +1,7 @@
+--SELECT * FROM produtos WHERE codigo = 2;
+--SELECT * FROM produtos WHERE descricao = 'Laptop';
+--SELECT * FROM produtos WHERE preco >= 'R$ 1200';
+
+SELECT p.descricao, p.preco, tp.descricao 
+	FROM produtos AS p, tipos_produto AS tp 
+	WHERE p.codigo_tipo = tp.codigo;

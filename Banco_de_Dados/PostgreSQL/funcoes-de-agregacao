@@ -1,0 +1,26 @@
+-- max
+ SELECT MAX(preco_venda) FROM produtos;
+ 
+ -- min
+ SELECT MIN(preco_venda) FROM produtos;
+ 
+-- avg
+-- SELECT AVG(preco_custo) FROM produtos; -- não funciona
+SELECT ROUND(AVG(preco_venda)::numeric,2) FROM produtos; -- Formatado para numerico
+
+SELECT AVG(preco_venda) FROM produtos; -- precisão grande
+SELECT TO_CHAR(AVG(preco_venda),'99999999D99') AS Media FROM produtos; -- Formatado para string
+
+--round
+SELECT ROUND(AVG(preco_custo::numeric), 2) FROM produtos; -- Calculando a média de valor Money
+SELECT ROUND(AVG(preco_venda), 4) FROM produtos;
+
+-- count
+ SELECT COUNT(preco_venda) AS Quantidade FROM produtos WHERE id_categoria = 1;
+ 
+ -- group by
+ SELECT id_categoria, MAX(preco_venda) FROM produtos GROUP BY id_categoria;
+ 
+ -- having
+SELECT id_categoria, MAX(preco_venda) FROM produtos GROUP BY id_categoria HAVING MAX(preco_venda) > 10;
+ 

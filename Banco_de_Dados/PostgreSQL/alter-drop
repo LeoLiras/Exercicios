@@ -1,0 +1,9 @@
+--ALTER TABLE tipos_produto ADD peso DECIMAL(8,2);
+
+SELECT * FROM tipos_produto;
+
+--CREATE TABLE drop_teste(
+--	codigo SERIAL NOT NULL
+--);
+
+DROP TABLE drop_teste;
