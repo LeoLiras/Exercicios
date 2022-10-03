@@ -1,0 +1,13 @@
+CREATE DATABASE secao04;
+
+CREATE TABLE tipos_produto(
+	codigo INTEGER PRIMARY KEY AUTOINCREMENT,
+	descricao TEXT NOT NULL
+);
+
+CREATE TABLE produtos(
+	codigo INTEGER PRIMARY KEY AUTOINCREMENT, 
+	descricao TEXT NOT NULL,
+	preco REAL NOT NULL,
+	codigo_tipo INTEGER REFERENCES tipos_produto(codigo) NOT NULL
+);
