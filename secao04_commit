@@ -1,8 +1,0 @@
-BEGIN TRANSACTION;
-
-INSERT INTO tipos_produto (descricao) VALUES ('Ventoinhas');
-INSERT INTO tipos_produto (descricao) VALUES ('Gabinetes');
-
-COMMIT;
-
-
