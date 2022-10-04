@@ -1,0 +1,7 @@
+BEGIN TRANSACTION; 
+
+INSERT INTO tipos_produto(descricao) VALUES ('Gabinetes');
+
+ROLLBACK;
+
+SELECT * FROM tipos_produto;
