@@ -1,0 +1,10 @@
+UPDATE tipos_produto SET descricao = 'Nobreak' WHERE codigo = 4;
+SELECT * FROM tipos_produto;
+
+--UPDATE produtos SET descricao = 'Nobreak', preco = 700, codigo_tipo = 4 WHERE codigo = 2;
+--SELECT * FROM produtos;
+
+--DELETE FROM produtos WHERE codigo = 6;
+
+
+
