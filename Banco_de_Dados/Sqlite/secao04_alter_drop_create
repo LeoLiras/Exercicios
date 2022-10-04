@@ -1,0 +1,11 @@
+ALTER TABLE tipos_produto ADD peso REAL;
+SELECT * FROM tipos_produto;
+
+--DROP TABLE produtos;
+
+--CREATE TABLE produtos(
+--	codigo INTEGER PRIMARY KEY AUTOINCREMENT,
+--	descricao TEXT NOT NULL,
+--	preco REAL NOT NULL,
+--	codigo_tipo INTEGER REFERENCES tipos_produto(codigo) NOT NULL
+--);
