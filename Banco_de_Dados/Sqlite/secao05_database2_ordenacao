@@ -1,0 +1,5 @@
+SELECT * FROM produtos;
+
+SELECT id, nome, id_tipo, id_fabricante, quantidade  FROM produtos ORDER BY id ASC;
+
+--SELECT id, nome, id_tipo, id_fabricante, quantidade  FROM produtos ORDER BY id DESC;

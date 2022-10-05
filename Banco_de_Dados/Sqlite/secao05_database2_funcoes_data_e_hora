@@ -1,0 +1,17 @@
+SELECT date();
+
+--SELECT time();
+
+-- SELECT datetime();
+
+-- SELECT strftime('%d/%m/%Y') AS 'Data Atual';
+
+-- SELECT strftime('%H:%M:%S') AS 'Hora Atual';
+
+-- SELECT strftime('%d/%m/%Y %H:%M:%S') AS 'Data e Hora Atuais';
+
+-- SELECT datetime('now', 'localtime') AS 'Data e Hora Locais';
+
+-- SELECT time('now', 'localtime') AS 'Hora Atual Local';
+
+-- SELECT datetime(CURRENT_TIMESTAMP, 'localtime') ;

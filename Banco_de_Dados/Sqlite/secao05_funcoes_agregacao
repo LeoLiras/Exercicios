@@ -1,0 +1,13 @@
+SELECT MAX(preco_venda) FROM produtos;
+
+--SELECT MIN(preco_venda) FROM produtos;
+
+--SELECT AVG(preco_venda) FROM produtos;
+
+--SELECT ROUND(AVG(preco_venda), 4) FROM produtos;
+
+--SELECT COUNT(preco_venda) AS Quantidade FROM produtos WHERE id_categoria = 1;
+
+--SELECT c.id, c.nome, MAX(p.preco_venda) FROM produtos AS p, categorias AS c WHERE c.id = p.id_categoria GROUP BY c.id;
+
+--SELECT id_categoria, MAX(preco_venda) FROM produtos GROUP BY id_categoria HAVING MAX(preco_venda) > 10;
