@@ -1,0 +1,122 @@
+--Após comando 'mongosh' no terminal: 
+
+use meubanco;
+
+db.inscricoes.insert(
+{
+	"aluno": "Selyna Kyle",
+	"data": new Date(),
+	"curso":{
+		"nome":"Ciência da Computação",
+	},
+	"notas":[9.0, 5.0, 10.0],
+	"skills":[
+		{
+			"nome": "Python",
+			"nivel": "Avançado"
+		},
+		{
+			"nome": "Banco de Dados",
+			"nivel": "Intermediário"
+		}	
+	]
+}
+)
+
+-----------------------------
+
+db.inscricoes.insert(
+{
+
+	"aluno": "Jason Todd",
+	"data": new Date(),
+	
+	"skills": [
+		{
+			"nome": "Python",
+			"nivel" : "Intermediário"
+		}
+	],
+	
+	"curso": {
+		"nome": "Programação para Internet",
+	},
+	
+}
+)
+
+----------------------------------------
+
+db.inscricoes.find(
+	{"skills.nome": "Python"}
+)
+
+---------------------------------
+
+db.inscricoes.find(
+	{
+	
+	"skills.nome": "Python",
+	"skills.nivel": "Avançado"
+	
+	}
+)
+
+------------------------
+
+db.inscricoes.find(
+	{
+	
+	     "curso.nome" : "Programação para Internet"	
+		
+	}
+	
+)
+
+------------------------
+
+db.inscricoes.find(
+	{
+		$or: [
+			{"curso.nome" : "Ciência da Computação"},
+			{"curso.nome" : "Programação para Internet"}
+		]
+	}
+)
+
+----------------------------
+
+
+db.inscricoes.find(
+	{
+		$or: [
+			{"curso.nome" : "Ciência da Computação"},
+			{"curso.nome" : "Programação para Internet"}
+		],
+		
+		"aluno": "Selyna Kyle"
+	}
+)
+
+---------------------------
+
+db.inscricoes.find(
+	{
+		"aluno" : "Jason Todd"
+	}
+)
+
+-----------------------
+
+db.inscricoes.find(
+	{
+		"skills.nome": "Python",
+		"skills.nivel": {
+			$in: ["Avançado", "Intermediário"]
+		}
+	}
+)
+
+
+		
+	
