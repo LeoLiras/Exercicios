@@ -1,0 +1,94 @@
+db.inscricoes.insert(
+	{
+		"aluno": "Naruto Uzumaki",
+		"data" : new Date(),
+		
+		"curso": {
+		
+			"nome": "Programação para Internet"
+		},
+		
+		"notas": [4.5, 6.7, 5.0]
+	}
+	
+)
+
+----------------------------
+
+db.inscricoes.insert(
+	{
+		"aluno": "Sasuke Uchiha",
+		"data" : new Date(),
+		
+		"curso": {
+		
+			"nome": "Programação para Internet"
+		},
+		
+		"notas": [9.0, 10.0, 8.5]
+	}
+)
+
+----------------------------
+
+db.inscricoes.insert(
+	{
+		"aluno": "Neji Hyuuga",
+		"data" : new Date(),
+		
+		"curso": {
+		
+			"nome": "Programação para Inter"
+		},
+		
+		"notas": [9.0, 10.0, 8.5]
+	}
+)
+
+--------------------------
+
+db.inscricoes.updateOne(
+	{"curso.nome": "Programação para Inter"},
+	{$set: {"curso.nome": "Programação para Internet"}}
+)
+
+---------------------------
+
+db.inscricoes.updateMany(
+	{"curso.nome": "Programação para Internet"},
+	{$set: {"curso.nome": "Programação"}}
+)
+
+-------------------------
+
+db.inscricoes.updateOne(
+	
+	{_id: ObjectId("6345e1b9b3fea7bed5bba894")},
+	{$push: {notas: 8.9}}
+)
+
+--------------------------
+
+db.inscricoes.updateOne(
+	
+	{_id: ObjectId("63448d9d8ee867f29857ddf5")},
+	{
+	
+	$push:{ 
+	
+	notas: {
+	
+		$each: [8.7, 9.0]
+		}
+	}
+})
+
+-----------------------
+
+db.inscricoes.deleteOne(
+	{
+
+	_id: ObjectId("634729795f743353c3e4f46c")
+	
+	}
+)
