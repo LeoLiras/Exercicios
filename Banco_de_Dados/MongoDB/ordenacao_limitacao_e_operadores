@@ -1,0 +1,44 @@
+--gt = Greather than -> maior que
+
+db.inscricoes.find(
+	{
+	
+	"notas": {
+	
+		$gt: 8.0	
+		
+		}	
+	}
+)
+
+----------------------------------------
+
+--gte = Greather than or equal -> maior ou igual
+
+db.inscricoes.find(
+	{
+		"notas": {
+		
+			$gte : 9.0
+			
+			}
+	}
+	
+)
+
+-----------------------------------------
+
+--Ordenação
+-- 1 = crescente (A a Z)
+-- -1 = decrescente
+
+db.inscricoes.find().sort({"aluno": 1})
+
+------------------------------------------
+
+--Limitação
+
+db.inscricoes.find().sort({"aluno": 1}).limit(3)
+
+
+
