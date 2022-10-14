@@ -1,0 +1,51 @@
+db.inscricoes.update(
+
+	{_id: ObjectId("6345d8e7e558ee8856b8010e")},
+	
+	{
+		$set : {
+			"localizacao" : {
+				"endereco" : "Rua Gothan, 123",
+				"coordinates": [-22.905400, -47.053710],
+				"type": "Point"
+			}
+			
+		}
+	}
+)
+
+------------------------------------------
+-- Para importar dados, abra o terminal no local do arquivo que estão os dados a serem importados e rode o seguinte comando: mongoimport -d seu_banco -c coleção_do_banco --jsonArray < nome_do_arquivo.json
+-------------------------------------------
+
+- 1 -> Informando ao Mongo o campo de busca.
+
+db.inscricoes.createIndex(
+	{
+	
+		"localizacao": "2dsphere"
+	}
+)
+
+----------------------------------------
+
+- 2 -> função de agregação para consulta por localidade, para vermos qual está mais próximo do objeto de referência.
+
+db.inscricoes.aggregate(
+	[
+		{
+			$geoNear: {
+				"near": {
+					"coordinates": [-20.363891, -54.571993],
+					"type": "Point"
+					},
+					"distanceField": "distancia.calculada",
+					"spherical": true
+				}
+			},
+			
+			{$limit : 5},
+			{$skip : 1}
+		]
+	)
+
