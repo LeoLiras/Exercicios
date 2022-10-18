@@ -1,0 +1,28 @@
+--Listas
+
+--Left push -> adicionar no começo da lista
+
+LPUSH "lançamentos" "Batman"
+LPUSH "lançamentos" "Avangers"
+LPUSH "lançamentos" "Homem de Ferro"
+
+LINDEX "lançamentos" 0
+LINDEX "lançamentos" 1
+
+--Right push -> adicionar no final da lista
+
+RPUSH "lançamentos" "Madagascar"
+
+--Tamanho da lista
+
+LLEN "lançamentos"
+
+--Buscar um range de valores -> exemplo: os dois últimos lançamentos:
+
+LRANGE "lançamentos" 0 1
+
+--Recortar elementos da lista(apagar)
+
+LTRIM "lançamentos" 0 2
+
+
