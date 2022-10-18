@@ -1,0 +1,36 @@
+--Redis no terminal do OS
+
+--Iniciando o Redis em segundo plano
+
+redis-server --daemonize yes
+
+--Acessando o Redis
+
+redis-cli
+
+--Adicionando dados -> SET "chave" valor
+
+SET "nota:17-08-2022:quimica" 9.0
+SET "nota:22-08-2022:biologia" 7.5
+SET "nota:06-05-2022:portugues" 6.0
+SET "nota:06-05-2022:historia" 8.0
+
+MSET nota:31-03-2022:geografia" 5.5 "nota:10-03-2022:ciencias" 8.0
+
+--Consultas de chaves -> KEYS "chave"
+
+KEYS "nota*"
+
+KEYS "nota:*-08*"
+KEYS "nota:*-05*"
+
+KEYS "nota:*:???????"
+
+KEYS "nota:*-0[38]*"
+
+--Consultas de valores -> GET "chave"
+
+GET "nota:06-05-2022:historia"
+
+
+
