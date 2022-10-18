@@ -1,0 +1,21 @@
+HASH's
+
+HSET "prova:02-04-2022:Bruce" "historia" 6.8
+HSET "prova:02-04-2022:Bruce" "portugues" 9.0
+HSET "prova:02-04-2022:Bruce" "geografia" 8.0
+
+HMSET "prova:08-02-2022:Selyna" "historia" 5.4 "ingles" 6.0 "geografia" 10.0
+
+--Consulta valores
+
+HGET "prova:02-04-2022:Bruce" "portugues"
+
+--Consulta de campos existentes
+
+HKEYS "prova:02-04-2022:Bruce"
+
+--Consulta de campos e valores
+
+HGETALL "prova:08-02-2022:Selyna"
+
+
