@@ -5,4 +5,8 @@ RPUSH "fila-confirmacao" "123123"
 
 LPOP "fila-confirmacao" --> sempre retira o próximo elemento da fila
 
+BLPOP "fila-confirmacao" 0 --> Aguarda a existência de um dado para retirá-lo da fila, com base em um tempo pré-determinado passado como parâmetro. Se o tempo for 0, o database fica aguardando indefinidamente.
+
+Ou BRPOP...
+
 LRANGE "fila-confirmacao" 0 -1 --> pega todos os elementos, independente do tamanho da lista/fila.
