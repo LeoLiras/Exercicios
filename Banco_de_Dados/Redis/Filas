@@ -1,0 +1,8 @@
+RPUSH "fila-confirmacao" "12341"
+RPUSH "fila-confirmacao" "21314"
+RPUSH "fila-confirmacao" "214432"
+RPUSH "fila-confirmacao" "123123"
+
+LPOP "fila-confirmacao" --> sempre retira o próximo elemento da fila
+
+LRANGE "fila-confirmacao" 0 -1 --> pega todos os elementos, independente do tamanho da lista/fila.
