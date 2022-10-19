@@ -1,0 +1,17 @@
+HSET "jogador" "bruce" 789
+HSET "jogador" "selyna" 265
+HSET "jogador" "dick" 272
+
+HINCRBY "jogador" "bruce" 10
+->Ou apenas INCRBY caso não esteja usando HASH;
+-> Apenas INCR para o incremento de apenas uma unidade;
+
+HGETALL "jogador"
+
+--Valores reais
+
+HSET "produto" "peso" 45.6
+HINCRBYFLOAT "produto" "peso" 8.9
+
+
+
