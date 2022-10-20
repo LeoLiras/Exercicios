@@ -1,0 +1,21 @@
+ZADD "jogador" 675 "bruce"
+ZADD "jogador" 345 "selina"
+ZADD "jogador" 325 "dick"
+
+TYPE "jogador"
+ZCARD "jogador"
+
+ZRANGE "jogador" 0 2
+
+-Por padrão o redis ordena do menor para o maior valor. Para ordenar do maior para o menor, basta usar REV:
+
+ZREVRANGE "jogador" 0 -1
+ZREVRANGE "jogador" 0 -1 WITHSCORES
+
+ZSCORE "jogador" "bruce"
+ZRANK "jogador" "bruce"
+ZREVRANK "jogador" "bruce"
+
+--Incrementando pontos
+
+ZINCRBY "jogador" 34 "bruce"
