@@ -32,6 +32,7 @@ Databases estudados:
 # Firebase
 
 ![Logo Firebase Database](https://i.ytimg.com/vi/fgT6r4f9Apc/maxresdefault.jpg)
+___________________________________________________________________________________________________________________________
 
 **Linguagem de Programação utilizada para o CRUD:**
 
@@ -44,4 +45,3 @@ Databases estudados:
 # Eclipse
 
 ![Eclipse Logo](https://algol.dev/wp-content/uploads/2020/10/logo-eclipse.png)
-___________________________________________________________________________________________________________________________
