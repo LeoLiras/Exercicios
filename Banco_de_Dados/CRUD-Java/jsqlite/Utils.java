@@ -11,12 +11,23 @@ public class Utils {
 	
 	static Scanner teclado = new Scanner(System.in);
 	
+	//Assim como nos outros, foi utilizado um driver de conexão disponível no package 'libs' dp projeto.
+	
+	/**
+	 * Realiza a conexão ao database
+	 * @return Conexão
+	 */
 	public static Connection conectar() {
+		//URL do database em formato de STRING.
 		String URL_SERVIDOR = "jdbc:sqlite:src/jsqlite/jsqlite.estudos";
 		
+		//Tratamento de excessões.
 		try {
+			
+			//Conexão com o database.
 			Connection con = DriverManager.getConnection(URL_SERVIDOR);
 			
+			//Código SQL de criaçao de tabela.
 			String TABLE = "CREATE IF NOT EXISTS produtos("
 					+ "id INTEGER PRIMARY KEY AUTOINCREMENT,"
 					+ "nome TEXT NOT NULL,"
@@ -33,6 +44,10 @@ public class Utils {
 		}
 	}
 	
+	/**
+	 * Realiza a desconexão do database.
+	 * @param Conexão
+	 */
 	public static void desconectar(Connection con) {
 		try {
 			con.close();
@@ -41,19 +56,26 @@ public class Utils {
 		}
 	}
 	
+	/**
+	 * Lista todos os dados já inseridos no database.
+	 */
 	public static void listar() {
+		//Código SQL de seleção de dados.
 		String BUSCAR_TODOS = "SELECT * FROM produtos";
 		
+		//Tratamento de exceções.
 		try {
+			//Conexão
 			Connection con = conectar();
 			
 			PreparedStatement produtos = con.prepareStatement(BUSCAR_TODOS);
 			ResultSet resultado = produtos.executeQuery();
 			
+			//Printando os dados no console.
 			System.out.println("\n=================Produtos==================\n");
 			
 			while(resultado.next()) {
-				System.out.println("ID: " + resultado.getInt(1));
+				System.out.println("\nID: " + resultado.getInt(1));
 				System.out.println("Produto: " + resultado.getString(2));
 				System.out.println("Preço: " + resultado.getFloat(3));
 				System.out.println("Estoque" + resultado.getInt(4));
@@ -68,7 +90,11 @@ public class Utils {
 		}
 	}
 	
+	/**
+	 * Insere novos dados no database.
+	 */
 	public static void inserir() {
+		//Recebendo as características do dado a ser inserido.
 		System.out.println("Insira o nome do produto: ");
 		String nome = teclado.nextLine();
 		System.out.println("Insira o preço do produto: ");
@@ -76,9 +102,12 @@ public class Utils {
 		System.out.println("Insira o estoque do produto: ");
 		int estoque = teclado.nextInt();
 		
+		//Código SQL de inserção de dados.
 		String INSERIR = "INSERT INTO produtos (nome, preco, estoque) VALUES (?, ?, ?)";
 		
+		//Tratamento de exceções.
 		try {
+			//Conexão
 			Connection con = conectar();
 			
 			PreparedStatement inserir = con.prepareStatement(INSERIR);
@@ -87,6 +116,7 @@ public class Utils {
 			inserir.setFloat(2, preco);
 			inserir.setInt(3, estoque);
 			
+			//Retorna a quantidade de items inseridos. Assim, se o valor for maior que 1, significa que o item foi inserido com sucesso.
 			int qntd = inserir.executeUpdate();
 			
 			if(qntd > 0) {
@@ -105,13 +135,20 @@ public class Utils {
 		}
 	}
 	
+	/**
+	 * Atualiza dados já existentes no database.
+	 */
 	public static void atualizar() {
+		//Recebendo o ID do produto a ser atualizado.
 		System.out.println("Insira o ID do produto: ");
 		int id = Integer.parseInt(teclado.nextLine());
 		
+		//Tratamento de excessões.
 		try {
+			//Conexão.
 			Connection con = conectar();
 			
+			//Recebendo os novos valores atualisados do dado.
 			System.out.println("Insira o novo nome do produto: ");
 			String nome = teclado.nextLine();
 			System.out.println("Insira o novo preço do produto: ");
@@ -119,8 +156,10 @@ public class Utils {
 			System.out.println("Insira a nova quantidade em estoque do produto: ");
 			int estoque = teclado.nextInt();
 			
+			//Código SQL de UPDATE no formato de String.
 			String ATUALIZAR = "UPDATE produtos SET nome=?, preco=?, estoque=? WHERE id=?";
 			
+			//Atualizando os dados.
 			PreparedStatement atualizar = con.prepareStatement(ATUALIZAR);
 			
 			atualizar.setString(1, nome);
@@ -128,6 +167,7 @@ public class Utils {
 			atualizar.setInt(3, estoque);
 			atualizar.setInt(4, id);
 			
+			//Retorna a quantidade de itens atualizados. Assim, se a quantidade for maior que 1, então o dado foi atualizado com sucesso.
 			int qntd = atualizar.executeUpdate();
 			
 			if(qntd > 0) {
@@ -145,19 +185,28 @@ public class Utils {
 		}
 	}
 	
+	/**
+	 * Deleta dados do database.
+	 */
 	public static void deletar() {
+		//Recebendo o ID do dado a ser deletado.
 		System.out.println("Insira o ID do produto a ser deletado");
 		int id = Integer.parseInt(teclado.nextLine());
 		
+		//Código SQL de DELETE no formato de String.
 		String DELETAR = "DELETE FROM produtos WHERE id=?";
 		
+		//Tratamento de excessões.
 		try {
+			//Conexão.
 			Connection con = conectar();
 			
+			//Deletando o dado com o ID informado.
 			PreparedStatement deletar = con.prepareStatement(DELETAR);
 			
 			deletar.setInt(1, id);
 			
+			//Retorna o número de itens deletados. Assim, se o valor for maior que 1, então o produto foi deletado com sucesso.
 			int qntd = deletar.executeUpdate();
 			System.out.println(qntd);
 			
@@ -178,7 +227,7 @@ public class Utils {
 	}
 	
 	public static void menu() {
-		System.out.println("==================Gerenciamento de Produtos===============");
+		System.out.println("==================Gerenciamento de Produtos SQLite===============");
 		System.out.println("Selecione uma opção: ");
 		System.out.println("1 - Listar produtos.");
 		System.out.println("2 - Inserir produtos.");
