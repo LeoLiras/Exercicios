@@ -142,6 +142,7 @@ public class Utils {
 	 * Atualiza os dados do Redis.
 	 */
 	public static void atualizar() {
+		//MELHORIA: Caso esse método receba uma chave que não existe, ele cria um novo produto, mesmo que a chave não siga o padrão pré-estabelecido.
 		//Conexão.
 		Jedis con = conectar();
 		
