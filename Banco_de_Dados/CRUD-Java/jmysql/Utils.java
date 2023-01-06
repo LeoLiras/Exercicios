@@ -106,8 +106,8 @@ public class Utils {
 	 */
 	public static void inserir() {
 		//Recebendo as informações dos novos dados.
-		System.out.println("/nInforme o nome do produto: ");
-		String nome = teclado.nextLine();
+		System.out.println("\nInforme o nome do produto: ");
+		String nome = teclado.next();
 		System.out.println("Informe o preço do produto: ");
 		float preco = teclado.nextFloat();
 		System.out.println("Informe a quantidade em estoque do produto: ");
@@ -137,11 +137,9 @@ public class Utils {
 			menu();
 			
 		}catch(Exception e) {
+			System.err.println("\nErro detectado.\n");
 			e.printStackTrace();
-			System.err.println("\nErro registrando o produto.\n");
 			System.exit(-1);
-			
-			menu();
 		}
 	}
 	
@@ -276,7 +274,7 @@ public class Utils {
 		System.out.println("3 - Atualizar produtos.");
 		System.out.println("4 - Deletar produtos.");
 		
-		int opcao = Integer.parseInt(teclado.nextLine());
+		int opcao = teclado.nextInt();
 		if(opcao == 1) {
 			listar();
 		}else if(opcao == 2) {
