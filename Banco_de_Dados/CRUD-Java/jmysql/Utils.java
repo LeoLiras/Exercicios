@@ -106,8 +106,9 @@ public class Utils {
 	 */
 	public static void inserir() {
 		//Recebendo as informações dos novos dados.
+		teclado.nextLine();
 		System.out.println("\nInforme o nome do produto: ");
-		String nome = teclado.next();
+		String nome = teclado.nextLine();
 		System.out.println("Informe o preço do produto: ");
 		float preco = teclado.nextFloat();
 		System.out.println("Informe a quantidade em estoque do produto: ");
@@ -148,7 +149,7 @@ public class Utils {
 	 */
 	public static void atualizar() {
 		System.out.println("Informe o código do produto: ");
-		int id = Integer.parseInt(teclado.nextLine());
+		int id = teclado.nextInt();
 		
 		//Código de busca SQL no formato de String.
 		String BUSCAR_POR_ID = "SELECT * FROM produtos WHERE id=?";
@@ -170,6 +171,7 @@ public class Utils {
 			
 			//Se houver dados, recebe as informações para atualizar o dado com o ID inserido.
 			if(qntd > 0) {
+				teclado.nextLine();
 				System.out.println("\nInforme o novo nome do produto: ");
 				String nome = teclado.nextLine();
 				System.out.println("Informe o novo preço do produto: ");
@@ -199,12 +201,9 @@ public class Utils {
 				menu();
 			}
 			
-		}catch(Exception e){
-			e.printStackTrace();
-			System.err.println("Erro ao atualizar produto");
+		}catch(Exception e) {
+			System.err.println("\nErro Detectado.\n");
 			System.exit(-1);
-			
-			menu();
 		}
 	}
 	
@@ -219,7 +218,7 @@ public class Utils {
 		
 		//Recebendo o ID do produto a ser deletado.
 		System.out.println("Informe o ID do produto: ");
-		int id = Integer.parseInt(teclado.nextLine());
+		int id = teclado.nextInt();
 		
 		//Tratamento de exceções.
 		try {
@@ -267,7 +266,7 @@ public class Utils {
 	 * Menu do console para chamar os métodos da aplicação e interagir com o database.
 	 */
 	public static void menu() {
-		System.out.println("==================Gerenciamento de Produtos MySQL===============");
+		System.out.println("\n==================Gerenciamento de Produtos MySQL===============");
 		System.out.println("Selecione uma opção: ");
 		System.out.println("1 - Listar produtos.");
 		System.out.println("2 - Inserir produtos.");
