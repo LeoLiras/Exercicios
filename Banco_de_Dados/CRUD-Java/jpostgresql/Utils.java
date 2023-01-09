@@ -109,6 +109,7 @@ public class Utils {
 	 */
 	public static void inserir() {
 		//Recebendo os valores do novo dado.
+		teclado.nextLine();
 		System.out.println("\nInsira o nome do produto: ");
 		String nome = teclado.nextLine();
 		System.out.println("Insira o preço do produto: ");
@@ -147,8 +148,9 @@ public class Utils {
 	 */
 	public static void atualizar() {
 		//Recebendo o ID do dado que será atualizado.
+		teclado.nextLine();
 		System.out.println("\nInsira o ID do produto: ");
-		int id = Integer.parseInt(teclado.nextLine());
+		int id = teclado.nextInt();
 		
 		//Código SQL de busca no formato de String para obtermos o dado com o ID informado.
 		String BUSCAR_POR_ID = "SELECT * FROM produtos WHERE id=?";
@@ -169,6 +171,7 @@ public class Utils {
 			
 			if(qntd > 0) {
 				//Recebendo os novos valores do dado a ser atualizado.
+				teclado.nextLine();
 				System.out.println("\nInforme o novo nome do produto:");
 				String nome = teclado.nextLine();
 				System.out.println("Informe o novo preço do produto: ");
@@ -193,6 +196,8 @@ public class Utils {
 				
 				System.out.println("\nProduto atualizado com sucesso\n");
 				
+				menu();
+				
 			}else {
 				System.out.println("\nNão foi encontrado nenhum produto com o ID inserido.\n");
 			}
@@ -210,6 +215,7 @@ public class Utils {
 		String BUSCAR_POR_ID = "SELECT * FROM produtos WHERE id=?";
 		
 		//Recebendo o ID do produto a ser deletado.
+		teclado.nextLine();
 		System.out.println("Informe o ID do produto: ");
 		int id = teclado.nextInt();
 		
@@ -260,7 +266,7 @@ public class Utils {
 		System.out.println("3 - Atualizar produtos.");
 		System.out.println("4 - Deletar produtos.");
 		
-		int opcao = Integer.parseInt(teclado.nextLine());
+		int opcao = teclado.nextInt();
 		if(opcao == 1) {
 			listar();
 		}else if(opcao == 2) {

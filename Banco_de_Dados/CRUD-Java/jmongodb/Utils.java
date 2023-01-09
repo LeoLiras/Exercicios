@@ -87,6 +87,7 @@ public class Utils {
 		try {
 			MongoCollection<Document> collection = conectar();
 			
+			teclado.nextLine();
 			System.out.println("Informe o nome do produto: ");
 			String nome = teclado.nextLine();
 			System.out.println("Informe o preço do produto: ");
