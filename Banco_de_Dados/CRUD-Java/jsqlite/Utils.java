@@ -95,6 +95,7 @@ public class Utils {
 	 */
 	public static void inserir() {
 		//Recebendo as características do dado a ser inserido.
+		teclado.nextLine();
 		System.out.println("Insira o nome do produto: ");
 		String nome = teclado.nextLine();
 		System.out.println("Insira o preço do produto: ");
@@ -140,6 +141,7 @@ public class Utils {
 	 */
 	public static void atualizar() {
 		//Recebendo o ID do produto a ser atualizado.
+		teclado.nextLine();
 		System.out.println("Insira o ID do produto: ");
 		int id = Integer.parseInt(teclado.nextLine());
 		
@@ -190,6 +192,7 @@ public class Utils {
 	 */
 	public static void deletar() {
 		//Recebendo o ID do dado a ser deletado.
+		teclado.nextLine();
 		System.out.println("Insira o ID do produto a ser deletado");
 		int id = Integer.parseInt(teclado.nextLine());
 		
@@ -234,7 +237,7 @@ public class Utils {
 		System.out.println("3 - Atualizar produtos.");
 		System.out.println("4 - Deletar produtos.");
 		
-		int opcao = Integer.parseInt(teclado.nextLine());
+		int opcao = teclado.nextInt();
 		if(opcao == 1) {
 			listar();
 		}else if(opcao == 2) {
