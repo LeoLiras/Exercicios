@@ -95,6 +95,7 @@ public class Utils {
 		String link = "http://admin:admin@localhost:5984/produtos";
 		
 		//Recebendo os dados do novo produto.
+		teclado.nextLine();
 		System.out.println("Informe o nome do produto: ");
 		String nome = teclado.nextLine();
 		System.out.println("Informe o preço do produto: ");
@@ -148,6 +149,7 @@ public class Utils {
 		HttpClient con = conectar();
 		
 		//Informando os dados novos para atualizar o produto.
+		teclado.nextLine();
 		System.out.println("Informe o ID do produto: ");
 		String id = teclado.nextLine();
 		System.out.println("Informe a revisão do produto: ");
@@ -208,6 +210,7 @@ public class Utils {
 		HttpClient con = conectar();
 		
 		//Recebendo dados necessários para realizar o DELETE.
+		teclado.nextLine();
 		System.out.println("Informe o ID do produto: ");
 		String id = teclado.nextLine();
 		System.out.println("Informe a revisão do produto: ");
@@ -229,7 +232,7 @@ public class Utils {
 			
 			//Se o status é igual a 200 o produto foi deletado com sucesso. Isso pode ser observado no Postman.
 			if(resposta.statusCode() == 200) {
-				System.out.println("O produto foi deletado com sucesso.");
+				System.out.println("\nO produto foi deletado com sucesso.\n");
 				
 				menu();
 			}else {
@@ -254,7 +257,7 @@ public class Utils {
 		System.out.println("3 - Atualizar produtos.");
 		System.out.println("4 - Deletar produtos.");
 		
-		int opcao = Integer.parseInt(teclado.nextLine());
+		int opcao = teclado.nextInt();
 		if(opcao == 1) {
 			listar();
 		}else if(opcao == 2) {
