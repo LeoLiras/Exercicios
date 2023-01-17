@@ -12,7 +12,7 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
+//import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
 
 public class Utils {
 	
@@ -39,7 +39,7 @@ public class Utils {
 		HttpClient con = conectar();
 		
 		//Link padrão para a conexão. Note que 'admin:admin123' refere-se a 'user:password' do CouchDB. Esse link foi retirado da ferramenta Postman.
-		String link = "http://admin:admin123@localhost:5984/produtos/_all_docs?include_docs=true";
+		String link = "http://admin:admin@localhost:5984/produtos/_all_docs?include_docs=true";
 		
 		//Realiza a requisição da conexão com o Database.
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(link)).build();
@@ -51,7 +51,6 @@ public class Utils {
 			
 			//Criando um objeto JSON, que é a forma como o CouchDB trabalha.
 			JSONObject obj = new JSONObject(resposta.body());
-			System.out.println(obj);
 			
 			//Se o objeto tiver mais que 0 linhas significa que já há produtos cadastrados.
 			if((int)obj.getInt("total_rows") > 0) {
@@ -93,7 +92,7 @@ public class Utils {
 		HttpClient con = conectar();
 		
 		//Link padrão para a conexão. Note que 'admin:admin123' refere-se a 'user:password' do CouchDB. Esse link foi retirado da ferramenta Postman.
-		String link = "http://admin:admin123@localhost:5984/jcouch";
+		String link = "http://admin:admin@localhost:5984/produtos";
 		
 		//Recebendo os dados do novo produto.
 		System.out.println("Informe o nome do produto: ");
@@ -128,6 +127,8 @@ public class Utils {
 			//Se o status é igual a 201 o produto foi criado com sucesso. Isso pode ser observado no Postman.
 			if(resposta.statusCode() == 201) {
 				System.out.println("\nProduto " + nome + " cadastrado com sucesso.\n");
+				
+				menu();
 			}else { 
 				System.out.println(obj);
 				System.out.println("\nStatus: " + resposta.statusCode());
@@ -159,7 +160,7 @@ public class Utils {
 		int estoque = teclado.nextInt();
 		
 		//Link para conexão e utilização do tipo de requisição PUT.
-		String link = "http://localhost:5984/jcouch/" + id + "/" + "?rev=" + rev;
+		String link = "http://localhost:5984/produtos/" + id + "/" + "?rev=" + rev;
 		
 		//Adicionando os dados novos em um objeto JSON.
 		JSONObject novo_produto = new JSONObject();
@@ -186,6 +187,8 @@ public class Utils {
 			//Se o status é igual a 201 o produto foi atualizado com sucesso. Isso pode ser observado no Postman.
 			if(resposta.statusCode() == 201) {
 				System.out.println("\nProduto atualizado com sucesso.\n");
+				
+				menu();
 			}else {
 				System.out.println(obj);
 				System.out.println("Status: " + resposta.statusCode());
@@ -211,7 +214,7 @@ public class Utils {
 		String rev = teclado.nextLine();
 		
 		//Link padrão para a requisição. Note que 'admin:admin123' refere-se a 'user:password' do CouchDB. Esse link foi retirado da ferramenta Postman.
-		String link = "http://admin:admin123@localhost:5984/" + id + "/" + "?rev=" + rev;
+		String link = "http://admin:admin@localhost:5984/produtos/" + id + "/" + "?rev=" + rev;
 		
 		//Realizando a requisição do tipo DELETE.
 		HttpRequest requisicao = HttpRequest.newBuilder()
@@ -227,6 +230,8 @@ public class Utils {
 			//Se o status é igual a 200 o produto foi deletado com sucesso. Isso pode ser observado no Postman.
 			if(resposta.statusCode() == 200) {
 				System.out.println("O produto foi deletado com sucesso.");
+				
+				menu();
 			}else {
 				System.out.println(resposta.body());
 				System.out.println("Status: " + resposta.statusCode());
