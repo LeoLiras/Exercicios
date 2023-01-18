@@ -89,6 +89,7 @@ public class Utils {
 		
 		
 		//Recebendo os valores do novo dado a ser inserido.
+		teclado.nextLine();
 		System.out.println("\nInsira o nome do produto: ");
 		String nome = teclado.nextLine();
 		System.out.println("Insira o preço do produto: ");
@@ -141,6 +142,7 @@ public class Utils {
 		HttpClient con = conectar();
 		
 		//Recebendo o ID do produto a ser atualizado.
+		teclado.nextLine();
 		System.out.println("\nInforme o ID do produto: ");
 		String id = teclado.nextLine();
 		
@@ -201,6 +203,7 @@ public class Utils {
 		HttpClient con = conectar();
 		
 		//Recebendo o ID do dado a ser deletado.
+		teclado.nextLine();
 		System.out.println("\nInforme o ID do produto a ser deletado: ");
 		String id = teclado.nextLine();
 		
@@ -244,7 +247,7 @@ public class Utils {
 		System.out.println("3 - Atualizar produtos.");
 		System.out.println("4 - Deletar produtos.");
 		
-		int opcao = Integer.parseInt(teclado.nextLine());
+		int opcao = teclado.nextInt();
 		if(opcao == 1) {
 			listar();
 		}else if(opcao == 2) {
