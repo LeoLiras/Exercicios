@@ -216,7 +216,7 @@ public class Utils {
 	}
 	
 	public static void menu() {
-		System.out.println("==================Gerenciamento de Produtos Jedis===============");
+		System.out.println("==================Gerenciamento de Produtos Redis===============");
 		System.out.println("Selecione uma opção: ");
 		System.out.println("1 - Listar produtos.");
 		System.out.println("2 - Inserir produtos.");

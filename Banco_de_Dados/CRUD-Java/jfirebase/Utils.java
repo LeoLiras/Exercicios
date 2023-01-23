@@ -38,7 +38,7 @@ public class Utils {
 		HttpClient con  = conectar();
 		
 		//Link para conexão. 'produtos.json' é uma coleção do database.
-		String link = "https://jfirebase-791e4-default-rtdb.firebaseio.com/produtos.json";
+		String link = "https://estudos3-1f389-default-rtdb.firebaseio.com/produtos.json";
 		
 		//Requisição da conexão com o Firebase
 		HttpRequest requisicao = HttpRequest.newBuilder().uri(URI.create(link)).build();
@@ -85,7 +85,7 @@ public class Utils {
 		HttpClient con = conectar();
 		
 		//Link para conexão com a coleção.
-		String link = "https://jfirebase-791e4-default-rtdb.firebaseio.com/produtos.json";
+		String link = "https://estudos3-1f389-default-rtdb.firebaseio.com/produtos.json";
 		
 		
 		//Recebendo os valores do novo dado a ser inserido.
@@ -155,7 +155,7 @@ public class Utils {
 		int estoque = teclado.nextInt();
 		
 		//Link de conexão com o produto específico a ser atualizado na coleção.
-		String link = "https://jfirebase-791e4-default-rtdb.firebaseio.com/produtos/" + id + ".json";
+		String link = "https://estudos3-1f389-default-rtdb.firebaseio.com/produtos/" + id + ".json";
 		
 		//Criando um objeto JSON e inserindo os valores nele, para posteriormente inserir o objeto no database.
 		JSONObject novo_produto = new JSONObject();
@@ -208,7 +208,7 @@ public class Utils {
 		String id = teclado.nextLine();
 		
 		//Link para conexão com o objeto específico da coleção a ser deletado.
-		String link = "https://jfirebase-791e4-default-rtdb.firebaseio.com/produtos/" + id + ".json";
+		String link = "https://estudos3-1f389-default-rtdb.firebaseio.com/produtos/" + id + ".json";
 		
 		//Requisição do tipo DELETE.
 		HttpRequest requisicao = HttpRequest.newBuilder()

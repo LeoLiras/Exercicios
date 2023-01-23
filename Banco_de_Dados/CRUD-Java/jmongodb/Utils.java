@@ -27,26 +27,26 @@ public class Utils {
 	
 	public static MongoCollection<Document> conectar() {
 		try {
-			MongoClient conection =  (MongoClient) MongoClients.create(
+			com.mongodb.client.MongoClient conection =  MongoClients.create(
 					MongoClientSettings.builder()
 						.applyToClusterSettings(builder -> 
 						builder.hosts(Arrays.asList(new ServerAddress("localhost", 27017))))
 						.build());
-			
+		
 			MongoDatabase database = conection.getDatabase("jmongo");
 			MongoCollection<Document> collection = database.getCollection("produtos");
 			
 			return collection;
 		}catch(Exception e) {
 			e.printStackTrace();
-			
 			return null;
 		}
 	}
 	
-	public static void desconectar() {
-		System.out.println("Desconectando...");
+	public static void desconectar(MongoCursor<Document> cursor) {
+		cursor.close();
 	}
+	
 	
 	public static void listar() {
 		MongoCollection<Document> collection = conectar();
@@ -73,7 +73,7 @@ public class Utils {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			cursor.close();
+			desconectar(cursor);
 			
 		}else {
 			System.out.println("Ainda não há documentos cadastrados.");
@@ -103,6 +103,8 @@ public class Utils {
 			collection.insertOne(Document.parse(produto.toString()));
 			
 			System.out.println("\nO produto " + nome + " foi inserido com sucesso\n");
+			
+			menu();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -112,6 +114,7 @@ public class Utils {
 		try {
 			MongoCollection<Document> collection = conectar();
 			
+			teclado.nextLine();
 			System.out.println("Insira o ID do produto: ");
 			String _id = teclado.nextLine();
 			System.out.println("Insira o novo nome do produto: ");
@@ -126,7 +129,9 @@ public class Utils {
 			UpdateResult res = collection.updateOne(new Document("_id", new ObjectId(_id)), query);
 			
 			if(res.getModifiedCount() == 1) {
-				System.out.println("\nProduto" + nome + " atualizado com sucesso.\n");
+				System.out.println("\nProduto " + nome + " atualizado com sucesso.\n");
+				
+				menu();
 			}else {
 				System.out.println("Não foi possível atualizar o produto.");
 			}
@@ -140,6 +145,7 @@ public class Utils {
 		MongoCollection<Document> collection = conectar();
 		
 		try {
+			teclado.nextLine();
 			System.out.println("Insira o ID do produto a ser deletado: ");
 			String _id = teclado.nextLine();
 			
@@ -147,6 +153,8 @@ public class Utils {
 			
 			if(del.getDeletedCount() == 1) {
 				System.out.println("Produto excluído com sucesso.");
+				
+				menu();
 			}else {
 				System.out.println("Não foi possível excluir o produto.");
 			}
@@ -156,14 +164,14 @@ public class Utils {
 	}
 	
 	public static void menu() {
-		System.out.println("==================Gerenciamento de Produtos===============");
+		System.out.println("==================Gerenciamento de Produtos MongoDB===============");
 		System.out.println("Selecione uma opção: ");
 		System.out.println("1 - Listar produtos.");
 		System.out.println("2 - Inserir produtos.");
 		System.out.println("3 - Atualizar produtos.");
 		System.out.println("4 - Deletar produtos.");
 		
-		int opcao = Integer.parseInt(teclado.nextLine());
+		int opcao = teclado.nextInt();
 		if(opcao == 1) {
 			listar();
 		}else if(opcao == 2) {
